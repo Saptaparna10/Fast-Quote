@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>User Registration</title>
+<link rel="stylesheet" type="text/css" href="css/usr.css" >
+<link rel="stylesheet" type="text/css" href="css/home1.css" >
+<script src="js/jquery.js"></script>
+<script src="js/jquery.validation.js"></script>
+<style type="text/css">#menu td a b.active{color: rgb(144, 255, 144);}</style>
+
+<script>
+$.validator.addMethod(
+		  "noDigits",
+		  function(value,element){
+		    var hNum=/[^a-z\s-]/;
+		    var inp=jQuery.trim(element.value).toLowerCase();
+		    if(hNum.test(inp)) {    return false;
+		    }
+		    else return true;
+		    },
+		    "Only characters are allowed."
+		  );
+
+$.validator.setDefaults({
+	submitHandler: function() { 
+		
+	var name=$("#name").val();
+	alert("User "+name+" successfully registered !");
+	}
+});
+
+$().ready(function() {
+	// validate the comment form when it is submitted
+//	$("#commentForm").validate();
+
+	$("#male,#female").click(function(){
+		
+		$("#sex_error").hide();
+	});
+	
+	$("#unemployed").click(function(){
+		
+		$("#occupation").toggle();
+		$('label[for="OCCUPATION"]').toggle();
+		$('input[name="OCCUPATION"]').removeClass("required error").addClass("required");
+		$('label[for="occupation"]').remove();
+	});
+//		if($("#unemployed").is(":checked"))
+	//		{
+		//	}
+/*		$('input[name="BtnSubmit"]').click(function(){
+	var ssn1=$("#ssn1");
+	var ssn2=$("#ssn2");
+	var ssn3=$("#ssn3");
+	if(ssn1.val()=="" || ssn2.val()=="" || ssn3.val()=="" || ssn1.val()==null || ssn2.val()==null || ssn3.val()==null){
+		ssn1.addClass("error").removeClass("valid");
+		ssn2.addClass("error").removeClass("valid");
+		ssn3.addClass("error").removeClass("valid");
+		$('label[for="SSN"]').toggle();
+	}
+
+		
+	});
+		*/
+	
+	//restricted number input
+  $("#ssn1,#ssn2,#ssn3,#income,#age").keydown(function(event) {
+        // Allow: backspace, delete, tab, escape, and enter
+  /*      if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+             // Allow: Ctrl+A
+            (event.keyCode == 65 && event.ctrlKey === true) || 
+             // Allow: home, end, left, right
+            (event.keyCode >= 35 && event.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        else {
+            // Ensure that it is a number and stop the keypress
+            if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+                event.preventDefault(); 
+            }   
+        }*/
+        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+                // Allow: Ctrl+A
+                (event.keyCode == 65 && event.ctrlKey === true) || 
+                 // Allow: home, end, left, right
+                (event.keyCode >= 35 && event.keyCode <= 39))
+        {
+        return;
+            }
+        else{
+        if(this.value.length == $(this).attr('maxlength')) {
+        	$(this).next('input').focus();
+        }
+        }
+    });
+
+		
+	
+	// validate signup form on keyup and submit
+	$("#userReg").validate({
+//		highlight: function(element, errorClass) {
+  //  $(element).fadeOut(function() {
+    //  $(element).fadeIn();
+  //  });
+ // },
+//		showErrors: function(errorMap, errorList) {
+        // Do nothing here
+ //   },
+ 		debug:true,
+ 		 groups: {
+ 			username: "SSN1 SSN2 SSN3"
+ 			},
+ 			errorPlacement: function(error, element) {
+ 			if (element.attr("name") == "SSN1" || element.attr("name") == "SSN2" || element.attr("name") == "SSN3" ) {
+ 			error.insertAfter("#ssn3");
+ 			} else {
+ 			error.insertAfter(element);
+ 			}
+ 			},
+ 		
+ 		rules:{
+			NAME:{required:true,
+				noDigits:true
+			},
+			SEX: "required",
+			DOB: {required:true,
+				date:true
+			},
+			ADDRESS: "required",
+			AGE: {required:true,
+				number: true},
+			STATUS: "required",
+			SSN1: {required:true, minlength:3,
+				number: true},
+			SSN2: {required:true, minlength:2,
+					number: true},
+			SSN3: {required:true, minlength:4,
+						number: true},
+//			SSN3: {
+//				required:true,
+//				depends: function(element){
+//					var ssn1=$("#ssn1");
+//					var ssn2=$("#ssn2");
+//					var ssn3=$("#ssn3");
+//					if(ssn1.val()=="" || ssn2.val()=="" || ssn3.val()=="" || ssn1.val()==null || ssn2.val()==null || ssn3.val()==null){
+//						return false;
+//					}
+//					else
+//						return true;
+//				}
+//			},
+	//		UNEMPLOYED: "required",
+	//		OCCUPATION: "required",				
+			INCOME: {required:true,
+				number: true},
+			EDUCATION: "required",
+				messages: {
+			NAME: {
+				required: 'Please enter your full name'
+			},
+			SEX: {
+				required: 'Please select a gender'
+			},
+			DOB:{
+				required: 'Please choose your DOB'
+				}
+				}
+			}
+		});
+
+	$("#reset").click(function(){
+	$("label.error").css("display","none");
+	$("#occupation").css("display","inline-block");
+	$('label[for="OCCUPATION"]').css("display","inline-block");
+
+});
+
+	
+/*	
+	
+	$("#submitBtn").click(function(){
+		var ssn1=$("#ssn1");
+		var ssn2=$("#ssn2");
+		var ssn3=$("#ssn3");
+		
+		if(ssn1.val()=="" || ssn2.val()=="" || ssn3.val()=="" || ssn1.val()==null || ssn2.val()==null || ssn3.val()==null){
+			
+			$("#ssn_error").css("display","inline-block");
+			alert(ssn1);
+		//	ssn1.addClass("error").removeClass("valid");
+		//	ssn2.addClass("error").removeClass("valid");
+		//	ssn3.addClass("error").removeClass("valid");
+			
+		}
+		
+	});
+	
+	*/
+	
+	});
+/*	$("#loginForm").validate({
+		rules: {
+			firstname: "required",
+			lastname: "required",
+			username: {
+				required: true,
+				minlength: 2
+			},
+			password: {
+				required: true,
+				minlength: 5
+			},
+			confirm_password: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password"
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			topic: {
+				required: "#newsletter:checked",
+				minlength: 2
+			},
+			agree: "required"
+		},
+		messages: {
+			firstname: "Please enter your firstname",
+			lastname: "Please enter your lastname",
+			username: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 2 characters"
+			},
+			password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			},
+			confirm_password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long",
+				equalTo: "Please enter the same password as above"
+			},
+			email: "Please enter a valid email address",
+			agree: "Please accept our policy"
+		}
+	});
+*/
+	// propose username by combining first- and lastname
+/*	$("#username").focus(function() {
+		var firstname = $("#firstname").val();
+		var lastname = $("#lastname").val();
+		if(firstname && lastname && !this.value) {
+			this.value = firstname + "." + lastname;
+		}
+	});
+
+	//code to hide topic selection, disable for demo
+	var newsletter = $("#newsletter");
+	// newsletter topics are optional, hide at first
+	var inital = newsletter.is(":checked");
+	var topics = $("#newsletter_topics")[inital ? "removeClass" : "addClass"]("gray");
+	var topicInputs = topics.find("input").attr("disabled", !inital);
+	// show when newsletter is checked
+	newsletter.click(function() {
+		topics[this.checked ? "removeClass" : "addClass"]("gray");
+		topicInputs.attr("disabled", !this.checked);
+	}); */
+</script>
+
+
+</head>
+<body>
+
+<div id="wrapper">
+<header id="header">
+<div class="wrap">
+<img src="images/Fast-quote_icon.gif" height="100px" width="100px" id="logo"><img src="images/fs.png" height="71px" width="557px" id="fs"></div></header>
+<div id="menu">
+<div class="wrap">
+<table>
+<tr>
+<td><a href="index.html" style="text-decoration:none;" ><b>HOME</b></a></div></td>
+<td><a href="#aboutUs.html"  style="text-decoration:none;"><b>ABOUT US</b></a></div></td>
+<td><a href="login.html" style="text-decoration:none;"><b>LOGIN<b></a></div></td>
+<td><a href="registerUser.html" style="text-decoration:none;"><b class="active">REGISTER</b></a></div></td>
+<td><a href="#contactUs.html" style="text-decoration:none;"><b>CONTACT US</b></a></div></td>
+</tr>
+</table>
+</div></div>
+<div id="content" >
+<div class="wrap">
+
+
+
+
+<div class="userRegBox" style="margin-left: 170px;">
+<FORM  id="userReg" name='userReg' METHOD=GET style="width: 520px;">
+<fieldset>
+   <legend align="middle"><b> User Registration </b></legend><br>
+                                    <p><label for="NAME">Name<font color=red size=2px> *</font> :</label>
+</label><INPUT TYPE='TEXT' NAME='NAME' id="name" placeholder="Enter your full name" maxlength=30></p>
+
+<p><label for="SEX">Gender<font color=red size=2px> *</font> :</label>
+<INPUT TYPE='RADIO' id="male" NAME='SEX' VALUE='Male' >Male&nbsp;&nbsp;&nbsp;&nbsp;
+<INPUT TYPE=RADIO id="female" NAME='SEX' VALUE=Female>Female
+<label for="SEX" style="display:none;" class="error" id="sex_error">This field is required.</label>
+</p>
+<p><label for="DATE">Date of Birth(DOB)<font color=red size=2px> *</font> :</label><INPUT TYPE="date" NAME="DOB" id="dob" max="1995-09-20" maxlength=10>
+</p>
+
+<p><label id="addr" for="ADDRESS">Mailing Address<font color=red size=2px> *</font> :</label><textarea name="ADDRESS" id="address" rows="3" cols="20" placeholder="Enter your Mailing Address"></textarea></p>
+
+<p><label for="AGE">Age when first licensed<font color=red size=2px> *</font> :</label><INPUT TYPE ="number" NAME="AGE" id="age" min=18 maxlength=3 placeholder="Must be at least
+18 years old"></p>
+
+<p><label for="STATUS">Current U.S. license status<font color=red size=2px> *</font> :</label>
+<SELECT name="STATUS">
+<OPTION VALUE=''>- Select Status -</OPTION>
+<OPTION VALUE ='ACTIVE'>ACTIVE</OPTION>
+<OPTION VALUE='INACTIVE'>INACTIVE</OPTION>
+<OPTION VALUE='SUSPENDED'>SUSPENDED</OPTION>
+<OPTION VALUE='REVOKED'>REVOKED</OPTION>
+</SELECT></p>
+
+<p><label for="SSN">Social Security Number (SSN)<font color=red size=2px> *</font> :</label><INPUT TYPE=TEXT NAME="SSN1" id="ssn1" maxlength=3 style="width: 25px;"> - <INPUT TYPE=TEXT NAME="SSN2" id="ssn2" maxlength=2 style="width: 15px;"> - <INPUT TYPE=TEXT NAME="SSN3" id="ssn3" maxlength=4 style="width: 30px;">
+<label id="ssn_error" for="ssn" style="display:none;" class="error" >This field is required.</label>
+</p>
+
+<p><label for="UNEMPLOYED">Unemployed? :</label><input type="checkbox" name="UNEMPLOYED" id="unemployed">
+<br>
+<label for="OCCUPATION">Occupation :</label><input type="text" name="OCCUPATION" id="occupation" class="required" placeholder="Enter Occupation">
+<label for="occupation" style="display:none;" class="error" >This field is required.</label>
+</p>
+
+<p><label for="INCOME">Annual Income<font color=red size=2px> *</font> :</label><input type= "text" name ="INCOME" id="income" placeholder="Enter Annual Income"></p>
+
+<p><label for="EDUCATION">Highest Level of Education<font color=red size=2px> *</font> :</label>
+<select name="EDUCATION" id="education">
+<OPTION VALUE=''>- Select Status -</OPTION>
+<OPTION VALUE='Less than High School'>Less than High School</OPTION>
+<OPTION VALUE='High School'>High School</OPTION>
+<OPTION VALUE='High School, pursuing College Degree'>High School, pursuing College Degree</OPTION>
+<OPTION VALUE='Bachelors'>Bachelors</OPTION>
+<OPTION VALUE='Bachelors, pursuing Masters Degree'>Bachelors, pursuing Masters Degree</OPTION>
+<OPTION VALUE='Masters'>Masters</OPTION>
+<OPTION VALUE='PhD'>PhD</OPTION>
+</select>
+
+<!--  <input type="text" name="EDUCATION" id="education">  -->
+
+</p> 
+
+
+<p id="btnPara">  
+<INPUT TYPE=SUBMIT value="     Submit     " name="BtnSubmit" class="button" id="submitBtn" />
+<input id="reset" type="reset" value="      Reset      " name="BtnReset" class="button">
+</p>
+</fieldset>
+</FORM>
+</div>
+</div>
+                                      </div>
+                                      
+                                      <footer id="footer">
+
+<div class="wrap">
+ <ul>
+        <li><a href="#">Homepage | </a></li>
+        <li><a href="#">Contact Us | </a></li>
+        <li><a href="#">Privacy Policy | </a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+      <p>CopyRight <i>Fast Quote</i> &copy; 2013</p>
+          </div>
+</footer>
+
+</body>
+</html>
