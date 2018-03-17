@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <!-- <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+                    <property name="connection.url">jdbc:hsqldb:hsql://localhost/TestDB</property> -->
+
+         <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+
+ <!--<property name="hibernate.connection.username">ilp1</property>
+        <property name="hibernate.connection.password">ilp</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+
+
+      -->    <property name="hibernate.connection.username">H01ORAUSER1D</property>
+        <property name="hibernate.connection.password">tcshyd</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@172.25.192.71:1521:javadb</property>
+  
+         <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">
+            org.hibernate.dialect.Oracle10gDialect
+        </property>
+
+         <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+      
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        
+        
+        
+        <property name="hbm2ddl.auto">update</property>
+
+        
+        <!--     <mapping class="com.group.hyb.UserDetails"/>
+          <mapping class="com.group.hyb.useone"/>
+          <mapping class="com.group.hyb.vechone"/>    -->
+       <mapping class="com.tcs.ilp.model.FqConvictionhistory"/>
+       <mapping class="com.tcs.ilp.model.FqAccidenthistory"/>
+       <mapping class="com.tcs.ilp.model.FqUser"/>
+       <mapping class="com.tcs.ilp.model.FqLogin"/>
+       <mapping class="com.tcs.ilp.model.FqVehicle"/>
+       
+          
+
+    </session-factory>
+
+</hibernate-configuration>
+
+
+

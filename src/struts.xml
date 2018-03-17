@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+	<struts>
+	<package name="login" namespace="/Emp" extends="struts-default">
+	<action name="login" class="com.tcs.ilp.action.LoginAction" method="checkLogin">
+	<result name="success">/emp.jsp</result>
+	<result name="error">/error.jsp</result>
+	<result name="login">/login.jsp</result>
+	</action>
+	
+	</package>
+	<package name="employee" namespace="/Emp" extends="struts-default">
+	
+	<action name="AddConviction">
+	<result >/addconvc.jsp</result>
+	</action>
+	<action name="DeleteConviction">
+	    <result>/deleteconv.jsp</result>
+	</action>
+	    <action name="ViewConviction">
+	    <result>/viewconv.jsp</result>
+	    </action>
+	    <action name="UpdateConviction">
+	    <result>/GetConvcUpdate.jsp</result>
+	    </action>
+	     <action name="AddAccident">
+	    <result>/addacc.jsp</result>
+	    </action>
+	    <action name="DeleteAccident">
+	    <result>/deleteacc.jsp</result>
+	    </action>
+	    <action name="ViewAccident">
+	    <result>/viewacc.jsp</result>
+	    </action>
+	    
+	     <action name="UpdateAccident">
+	    <result>/GetAccUpdate.jsp</result>
+	    </action>
+	
+	<action name="Accidentinsert" class="com.tcs.ilp.action.AccidentAction" method="insert">
+	    <result name="success">/accaddsuccess.jsp</result>
+	    <result name="error">/accadderror.jsp</result>
+	      <result name="input">/addacc.jsp</result>
+	    <result name="IDnotfound">/IDnotfound.jsp</result>
+	    
+	    </action>
+		
+		 <action name="Accidentdelete" class="com.tcs.ilp.action.AccidentAction" method="delete">
+	    	<result name="confirmdel">/confirmdelaccident.jsp</result>
+	    	  <result name="input">/deleteacc.jsp</result>
+	     <result name="IDnotfound">/IDnotfound.jsp</result>
+	    </action>
+	    
+	     <action name="MulAccDelete" class="com.tcs.ilp.action.AccidentAction" method="Muldelete">
+	    	 <result name="success">/viewmuldel.jsp</result>
+	     <result name="input">/deleteacc.jsp</result>
+	     <result name="error">/error.jsp</result>
+	    </action>
+	    
+	     <action name="confirmmuldel" class="com.tcs.ilp.action.AccidentAction" method="ConfirmMuldelete">
+	     <result name="success">/deleteSuccessful.jsp</result>
+	     <result name="input">/deleteacc.jsp</result>
+	     <result name="error">/error.jsp</result>
+	    </action>
+	    
+	    
+	      <action name="ConfirmAccidentDelete" class="com.tcs.ilp.action.AccidentAction" method="confirmdelete">
+	    <result name="success">/accdelsuccess.jsp</result>
+	     <result name="input">/confirmdelaccident.jsp</result>
+	     <result name="error">/error.jsp</result>
+	     <result name="IDnotfound">/IDnotfound.jsp</result>
+	     </action>
+
+	<action name="Accidentview" class="com.tcs.ilp.action.AccidentAction" method="myview">
+	    <result name="success">/ViewAccd.jsp</result>
+	   <result name="error">/viewaccerror.jsp</result>
+	    <result name="input">/viewacc.jsp</result>
+	   
+	   <result name="IDnotfound">/IDnotfound.jsp</result>
+	    </action>
+
+
+<action name="Accidentupdate" class="com.tcs.ilp.action.AccidentAction" method="chkconvc">
+	    <result name="success">/updateaccdetails.jsp</result>
+	     <result name="input">/GetAccUpdate.jsp</result>
+	   <result name="error">/accdelerror.jsp</result>
+	     <result name="IDnotfound">/IDnotfound.jsp</result>
+	    </action>
+	    
+	    <action name="ConfirmAccidentupdate" class="com.tcs.ilp.action.AccidentAction" method="confrmupdate">
+	    <result name="success">/convUpdateSuccess.jsp</result>
+	     <result name="error">/accdelerror.jsp</result>
+	     <result name="IDnotfound">/IDnotfound.jsp</result>
+	   <result name="input">/updatedetails.jsp</result>
+	    </action>
+	
+	
+	
+	
+	
+	<action name="Convictioninsert" class="com.tcs.ilp.action.ConvictionAction" method="myMethod">
+	    <result name="success">/convcaddsuccess.jsp</result>
+	    <result name="error">/convcadderror.jsp</result>
+	    <result name="IDnotfound">/IDnotfound.jsp</result>
+	    <result name="input">/addconvc.jsp</result>
+	    </action>
+	    
+	
+	
+	
+	 <action name="Convcictiondelete" class="com.tcs.ilp.action.ConvictionAction" method="delete">
+	    <result name="success">/convcdelsuccess.jsp</result>
+	   <result name="input">/deleteconv.jsp</result>
+	     <result name="error">/error.jsp</result>
+	    
+	      <result name="confirmdel">/confirmdelconvciction.jsp</result>
+	     <result name="IDnotfound">/IDnotfound.jsp</result>
+	    </action>
+	    
+	    <action name="ConfirmConvictiondelete" class="com.tcs.ilp.action.ConvictionAction" method="confirmdelete">
+	    <result name="success">/convcdelsuccess.jsp</result>
+	     <result name="input">/convcdelerror.jsp</result>
+	     <result name="error">/error.jsp</result>
+	    
+	      <result name="confirmdel">/confirmdelconvc.jsp</result>
+	     <result name="IDnotfound">/IDnotfound.jsp</result>
+	    </action>
+	    
+	<action name="Convictionview" class="com.tcs.ilp.action.ConvictionAction" method="myview">
+	    <result name="success">/viewconvcsuccess.jsp</result>
+	   <result name="input">/viewconv.jsp</result>
+	    <result name="error">/error.jsp</result>
+	     <result name="IDnotfound">/IDnotfound.jsp</result>
+	    </action>
+	    
+	    <action name="Convictionupdate" class="com.tcs.ilp.action.ConvictionAction" method="chkconvc">
+	    <result name="success">/updateconvcdetails.jsp</result>
+	   <result name="input">/GetConvcUpdate.jsp</result>
+	    <result name="error">/error.jsp</result>
+	     <result name="IDnotfound">/IDnotfound.jsp</result>
+	    </action>
+	    
+	    <action name="ConfirmConvictionupdate" class="com.tcs.ilp.action.ConvictionAction" method="confrmupdate">
+	    <result name="success">/convUpdateSuccess.jsp</result>
+	     <result name="error">/error.jsp</result>
+	     <result name="IDnotfound">/IDnotfound.jsp</result>
+	   <result name="input">/updatedetails.jsp</result>
+	    </action>
+	
+	</package>
+	   
+	   
+	</struts>
