@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script>
+	function validate(){	
+		var x=document.forms["login"]["unm"].value;
+		var y=document.forms["login"]["pwd"].value;
+		if(x==null||x==""){
+			alert("Username cannot be empty");
+			return false;
+			
+		}
+
+		
+		if(y==null||y==""){
+			alert("Password cannot be empty");
+			return false;
+		}
+		
+		
+		
+	
+
+		if((document.forms["login"]["unm"].value=="user")&&(document.forms["login"]["pwd"].value=="user"))
+		{
+			
+			window.location.assign("userHome.html")
+		}
+		else if((document.forms["login"]["unm"].value=="employee")&&(document.forms["login"]["pwd"].value=="employee")){
+			window.location.assign("employeeHome.html")
+		}
+		else {
+			alert("wrong")
+			return false;
+		}
+	}
+	
+	
+</script>
+
+
+</head>
+
+<body>
+<form name="login" method="post" >
+<table>
+<tr>
+	<td>Username</td>
+	<td><input type="text" name="unm" ></input></td>
+</tr>
+<tr>
+	<td>Password</td>
+	<td><input type="password" name="pwd" ></input></td>
+</tr>
+
+</br>
+<tr>
+	<td><input type="button" value="submit" onclick="return validate()" />
+</tr>
+</table>
+</form>
+</body>
+</html>

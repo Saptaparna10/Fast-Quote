@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+function select( c)
+{
+	
+	
+
+	
+var i=0;
+	
+	var x=document.getElementById("modelid");
+		
+		if(c=="bmw"|| c=="BMW")
+		{ 
+			document.getElementById('modelid').innerHTML = "";
+			 var bmwmodel=["128i", "M3"," M5"," M6"," X3", "X5", "X6"];
+			
+			 var length=bmwmodel.length;
+			
+		}
+		else if(c=="ford"||c=="Ford")
+		{	//alert(c);
+		document.getElementById('modelid').innerHTML = "";
+			 var bmwmodel=["Crown"," Victoria"," Escape"," Fusion"," Ranger","Taurus"];
+			 var length=bmwmodel.length;
+		}
+		else if(c=="honda"||c=="honda")
+		{	//alert(c);
+		document.getElementById('modelid').innerHTML = "";
+			 var bmwmodel=["Accord", "Civic", "Fit", "Pilot"];
+			 var length=bmwmodel.length;
+		}
+
+		else if(c=="Chevrolet"||c=="chevrolet")
+		{	//alert(c);
+		document.getElementById('modelid').innerHTML = "";
+			 var bmwmodel=["Aveo", "Camaro", "Silverado", "Suburban", "Traverse"];
+			 var length=bmwmodel.length;
+		}
+		else if(c=="Hyundai"||c=="hyundai")
+		{	//alert(c);
+		document.getElementById('modelid').innerHTML = "";
+			 var bmwmodel=["Accent", "Azera"," Elantra", "Sonata"];
+			 var length=bmwmodel.length;
+		}
+		else if(c=="Toyota"||c=="toyota")
+		{	//alert(c);
+		document.getElementById('modelid').innerHTML = "";
+			 var bmwmodel=["Avalon", "Camry", "Corolla", "Tundra"];
+			 var length=bmwmodel.length;
+		}
+
+		
+		
+
+		 while(i<length)
+		 {  var opt=bmwmodel[i];
+			var text=document.createElement('option');
+			text.value=opt;
+			text.innerHTML=opt;
+			x.appendChild(text);			
+			i++;
+		 }
+		 
+
+			  
+	  
+}
+
+/*function validate(){		
+	
+	var x=document.forms["vehicalreg"]["on_road"].value;
+	if(x==null||x==""){
+		alert("Username cannot be empty");
+		return false;
+	}*/
+
+
+
+</script>
+
+</head>
+<body>
+<form name="vehicalreg" action="www.google.com" onsubmit="return validate()">
+<table>
+	<tr><td>Make: <td><select name="make" id="makeid" onchange="select(this.value)" >
+  		<option value="">Select</option>	
+  		<option value="bmw">BMW</option>
+  		<option value="chevrolet">Chevrolet</option>
+  		<option value="Ford">Ford</option>
+  		<option value="honda">Honda</option>
+  		<option value="hyundai">Hyundai</option>
+  	<option value="toyota">Toyota</option>
+	</select> 
+	
+		Model: <select id="modelid">
+		<option value="">Select</option>
+	   	</select>
+	<tr><td>Year of manufacture:</td>
+	<td><select name="yom" >
+		<option>2003</option>
+		<option>2004</option>
+		<option>2005</option>
+		<option>2006</option>
+		<option>2007</option>
+		<option>2008</option>
+		<option>2009</option>
+		<option>2010</option>
+		<option>2011</option>
+		<option>2012</option>
+		<option>2013</option></select>
+	<tr><td>Type:<td><select name="type"><option>Coupe</option><option>Sedan</option><option>Hatchback</option>
+		<option>SUV</option></select>
+	<tr><td>On the road price:<td><input type="text" name="on_road"/>	
+	<tr ><td align="right"><input type="submit" value="Register" />   
+
+</table>
+</form>
+
+
+</body>
+</html>

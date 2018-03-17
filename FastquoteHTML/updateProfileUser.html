@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Home</title>
+<script>
+	function validate(){		
+		var x=document.forms["updtEmp"]["nm"].value;
+		
+		if(x==null||x==""){
+			alert("Name cannot be empty");
+			return false;
+		}
+
+		var x=document.forms["updtEmp"]["email"].value;
+		if(x==null||x==""){
+			alert("Mail cannot be empty");
+			return false;
+		}
+
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+   			 if (!filter.test(x)) {
+   			 alert('Please provide a valid email address');
+    			x.focus;
+    			return false;
+ 		}
+		var x=document.forms["updtEmp"]["status"].value;
+		if(x==null||x==""){
+			alert("Status cannot be empty");
+			return false;
+		}
+		
+		var x=document.forms["updtEmp"]["occ"].value;
+		if(((x==null||x=="")&&(document.updtEmp.chk.checked==false))||((document.updtEmp.chk.checked==true) && (x!=null||x!=""))){
+			alert("Either of them must be selectd");
+			return false;
+		}
+	
+
+		
+		var x=document.forms["updtEmp"]["inc"].value;
+		if(x==null||x==""){
+			alert("Income cannot be empty");
+			return false;
+		}
+		
+		var x=document.forms["updtEmp"]["edu"].value;
+		if(x==null||x==""){
+			alert("Education cannot be empty");
+			return false;
+		}
+
+}
+	
+</script>
+
+
+</head>
+<body>
+<form name="updtEmp" action="" method="post" onsubmit="return validate()">
+<table>
+<tr>
+<td>User id</td>
+<td><input type="text" value="731596" disabled="disabled"/></td>
+</tr>
+<tr>
+<td>Name</td>
+<td><input type="text" value="Saptaparna Das" name="nm"/> </td>
+</tr>
+<tr>
+<td>Gender</td>
+<td><input type="text" value="Female" disabled="disabled"/></td>
+</tr>
+<tr>
+<td>Date of birth</td>
+<td><input type="text" value="10/10/1991" disabled="disabled"/></td>
+</tr>
+<tr>
+<td>Email address</td>
+<td><input type="text" value="saptaparna1991@gmail.com" name="email"/></td>
+</tr>
+<tr>
+<td>Age when first licensed</td>
+<td><input type="text" value="18" disabled="disabled"/></td>
+</tr>
+<tr>
+<td>Current U.S. license status</td>
+<td><input type="text" value="Active" name="status"/></td>
+</tr>
+<tr>
+<td>Social Security Number (SSN)</td>
+<td><input type="text" value="123-12-1234" disabled="disabled"/></td>
+</tr>
+<tr>
+	<td>Occupation</td>
+	<td><input type="text" name="occ"/></td>
+	<td><input type="checkbox" name="chk" value="unemployed"/>Unemployed</td>
+</tr>
+<tr>
+<td>Annual Income</td>
+<td><input type="text" value="3.16 L" name="inc"/></td>
+</tr>
+<tr>
+	<td>Education</td>
+	<td><select name="edu"><option value="actv">Less than High School</option>
+	<option value="hgh">High School</option>
+	<option value="clg">pursuing College Degree</option>
+	<option value="btech">Bachelors</option>
+	<option value="mtch">pursuing Masters Degree</option>
+	<option value="ms">Masters</option>
+	<option value="phd">PhD</option>
+	</select></td>
+</tr>
+
+<tr>
+<td align="center"><input type="submit" value="submit"/></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

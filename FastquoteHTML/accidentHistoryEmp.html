@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript">
+function validate(){	
+var x=document.forms["acc"]["uid"].value;
+	
+	if(x==null||x==""){
+		alert("Please enter user id");
+		return false;
+	}
+var x=document.forms["acc"]["dt"].value;
+	
+	if(x.length==0){
+		alert("Date cannot be empty");
+		return false;
+	}
+	
+var x=document.forms["acc"]["cmt"].value;
+	
+	if(x==null||x==""){
+		alert("Please describe the accident");
+		return false;
+	}
+
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Accident history</title>
+</head>
+<body>
+<form action="" name="acc" method="post" onsubmit="return validate(this)">
+<table>
+<tr>
+	<td>User Id </td>
+	<td><input type="text" name="uid" ></input></td>
+</tr>
+<tr>
+	<td>Vehicle Id</td>
+	<td><input type="text"  name="vid" ></input></td>
+</tr>
+<tr>
+	<td>Date of accident</td>
+	<td><input type="date" name="dt" ></input></td>
+</tr>
+<tr>
+	<td>Nature of accident</td>
+	<td><select>
+	<option value="Grievous">Grievous</option>
+	<option value="Major">Major</option>
+	<option value="Minor">Minor</option>
+	<option value="Cosmetic">Cosmetic</option>
+	</select>
+</td>
+</tr>
+<tr>
+	<td>Comments</td>
+	<td><textarea rows="4" cols="50" name="cmt">
+</textarea>
+</td>
+</tr>
+
+
+<tr><td><input type="submit" value="submit"/></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
